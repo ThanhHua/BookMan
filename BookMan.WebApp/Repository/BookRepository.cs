@@ -18,6 +18,12 @@ namespace BookMan.WebApp.Repository
             new Book {Id =5,Title = "ASP.NET Core Video Course", Publisher = "Linda", Authors= "Vladimir Putin"}
         };
         public Book Get(int id) => Books.SingleOrDefault(b => b.Id == id);
+
+        public bool Delete(int id)
+        {
+            var book = Get(id);
+            return book != null ? Books.Remove(book) : false;
+        }
     }
 
 }

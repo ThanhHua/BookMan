@@ -1,6 +1,6 @@
 using BookMan.WebApp.Interface;
 using BookMan.WebApp.Model;
-
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BookMan.WebApp.Pages
@@ -18,6 +18,19 @@ namespace BookMan.WebApp.Pages
             Job = Action.Detail;
             Book = _repository.Get(id);
             ViewData["Title"] = Book == null ? "Book not found!" : $"Detail - {Book.Title}";
+        }
+
+        public void OnGetDelete(int id)
+        {
+            Job = Action.Delete;
+            Book = _repository.Get(id);
+            ViewData["Title"] = Book == null ? "Book not found!" : $"Confirm deleting: {Book.Title}";
+        }
+
+        public IActionResult OnGeConfirm(int id)
+        {
+            _repository.Delete(id);
+            return new RedirectToPageResult("index");
         }
     }
 }
