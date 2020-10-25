@@ -14,5 +14,7 @@ namespace BookMan.WebApp.Interface
 
         public Book Create();
         public bool Add(Book book);
+
+        public bool Update(Book book);
     }
 }

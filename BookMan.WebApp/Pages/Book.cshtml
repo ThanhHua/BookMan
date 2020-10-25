@@ -21,6 +21,7 @@
             await form();
             break;
         case BookModel.Action.Update:
+            await form(handler: "update");
             break;
 
     }

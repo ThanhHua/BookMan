@@ -33,6 +33,12 @@ namespace BookMan.WebApp.Repository
         }
 
         public bool Add(Book book) => Books.Add(book);
+
+        public bool Update(Book book)
+        {
+            var b = Get(book.Id);
+            return b != null ? Books.Remove(b) && Books.Add(book) : false;
+        }
     }
 
 }

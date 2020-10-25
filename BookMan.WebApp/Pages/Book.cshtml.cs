@@ -45,5 +45,18 @@ namespace BookMan.WebApp.Pages
             _repository.Add(Book);
             return new RedirectToPageResult("index");
         }
+
+        public void OnGetUpdate(int id)
+        {
+            Job = Action.Update;
+            Book = _repository.Get(id);
+            ViewData["Title"] = Book == null ? "Book not found!" : $"Update: {Book.Title}";
+        }
+
+        public IActionResult OnPostUpdate(Book book)
+        {
+            _repository.Update(book);
+            return new RedirectToPageResult("index");
+        }
     }
 }
