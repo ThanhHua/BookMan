@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using BookMan.WebApp.Model;
 
 namespace BookMan.WebApp.Interface
@@ -11,5 +11,8 @@ namespace BookMan.WebApp.Interface
         public Book Get(int id);
 
         public bool Delete(int id);
+
+        public Book Create();
+        public bool Add(Book book);
     }
 }

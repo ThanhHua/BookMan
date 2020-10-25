@@ -15,9 +15,10 @@
                 <p class="text-danger text-center">Bạn thực sự muốn xóa cuốn sách này?</p>
                 <a class="btn btn-danger btn-block mb-2" href="/book/@Model.Book.Id?handler=confirm">Delete</a>
             }
-            <a class="btn btn-info btn-block mb-2" href="/">Return</a>
+            <a class="btn btn-info btn-block mb-2" href="/">Return </a>
             break;
         case BookModel.Action.Create:
+            await form();
             break;
         case BookModel.Action.Update:
             break;
@@ -43,5 +44,15 @@
         <input name="publisher" type="text" class="form-control mb-2" id="publisher" value="@Model.Book.Publisher" @(readOnly? "readOnly": "")/>
         <label for="year" class="">Năm xuất bản</label>
         <input name="year" type="text" class="form-control mb-2" id="year" value="@Model.Book.Year" @(readOnly? "readOnly": "")/>
+    }
+
+    async Task form(string handler = "create")
+    {
+        <form method="post" href="?handler=@handler">
+            @{ template(false); }
+            <button type="submit" class="btn btn-primary btn-block mb-2">Save</button>
+            <button type="reset" class="btn btn-secondary btn-block mb-2">Reset</button>
+        </form>
+        <a class="btn btn-info btn-block mb-2">Return</a>
     }
 }

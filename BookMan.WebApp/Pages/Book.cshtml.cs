@@ -32,5 +32,18 @@ namespace BookMan.WebApp.Pages
             _repository.Delete(id);
             return new RedirectToPageResult("index");
         }
+
+        public void OnGetCreate()
+        {
+            Job = Action.Create;
+            Book = _repository.Create();
+            ViewData["Title"] = "Create a new book";
+        }
+
+        public IActionResult OnPostCreate(Book book)
+        {
+            _repository.Add(Book);
+            return new RedirectToPageResult("index");
+        }
     }
 }
