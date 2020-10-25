@@ -42,7 +42,7 @@ namespace BookMan.WebApp.Pages
 
         public IActionResult OnPostCreate(Book book)
         {
-            _repository.Add(Book);
+            _repository.Add(book);
             return new RedirectToPageResult("index");
         }
 
