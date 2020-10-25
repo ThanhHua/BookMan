@@ -5,6 +5,32 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="h3 p-3">Welcome to ASP.NET Razors Page library!</h1>
+    <div>
+        <table class="table table-bordered table-sm">
+            <thead class="thead-light">
+            <tr>
+                <th>Tiêu đề</th>
+                <th>Tác giả</th>
+                <th>Nhà xuất bản</th>
+                <th>Năm xuất bản</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach(var b in Model.Books)
+            {
+                <tr>
+                    <td><a href="/book/@b.Id">@b.Title</a></td>
+                    <td>@b.Authors</td>
+                    <td>@b.Publisher</td>
+                    <td>@b.Year</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="/book/@b.Id">Details</a>
+                    </td>
+                </tr>
+            }
+            <tr><td colspan="5"><strong>Tổng số sách trong thư viện: @Model.Count</strong></td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
